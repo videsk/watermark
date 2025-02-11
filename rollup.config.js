@@ -3,7 +3,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 // Serve plugins
-import replace from '@rollup/plugin-replace';
 import livereload from 'rollup-plugin-livereload';
 
 import pkg from "./package.json";
@@ -37,6 +36,17 @@ function addToBuild(options) {
     return production && options;
 }
 
+const banner = `/**
+ * Copyright (C) ${new Date().getFullYear()} by Videsk - All Rights Reserved
+ * @name ${pkg.name}
+ * @author Videsk
+ * @license ${pkg.license}
+ * Written by ${pkg.author}
+ *
+ * ${pkg.description}
+ *
+*/`;
+
 export default {
     input: 'src/index.js',
     output: [
@@ -47,27 +57,22 @@ export default {
             esModule: false,
             sourcemap: !production,
             strict: false,
+            banner,
         },
         addToBuild({
             file: pkg.main,
             format: 'cjs',
             sourcemap: !production,
+            banner,
         }),
         addToBuild({
             file: pkg.module,
             format: 'es',
             sourcemap: !production,
+            banner,
         }),
     ],
     plugins: [
-        replace({
-            'process.env.NODE_ENV': JSON.stringify( 'production' ),
-            'LIBRARY_NAME': pkg.umdName,
-            'LICENSE': pkg.license,
-            'CURRENT_YEAR': new Date().getFullYear(),
-            'DESCRIPTION_LIBRARY': pkg.description,
-            'AUTHOR_LIBRARY': pkg.author,
-        }),
         resolve({
             browser: true
         }),
