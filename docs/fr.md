@@ -11,6 +11,8 @@ Une bibliothèque moderne pour créer des filigranes holographiques sur des imag
 - 👷 Compatible avec les Web Workers
 - 🔄 Traitement asynchrone
 
+![watermark-id](/example.png)
+
 ## Installation
 
 ```bash

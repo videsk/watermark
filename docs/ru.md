@@ -11,6 +11,8 @@
 - 👷 Совместимость с Web Workers
 - 🔄 Асинхронная обработка
 
+![watermark-id](/example.png)
+
 ## Установка
 
 ```bash

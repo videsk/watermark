@@ -11,6 +11,8 @@ Una librería moderna para crear marcas de agua holográficas en imágenes utili
 - 👷 Compatible con Web Workers
 - 🔄 Procesamiento asíncrono
 
+![watermark-id](/example.png)
+
 ## Instalación
 
 ```bash

@@ -11,6 +11,8 @@
 - 👷 兼容 Web Workers
 - 🔄 异步处理
 
+![watermark-id](/example.png)
+
 ## 安装
 
 ```bash

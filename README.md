@@ -13,6 +13,8 @@ Spanish: [Read here](docs/es.md).
 - 👷 Web Workers compatible
 - 🔄 Asynchronous processing
 
+![watermark-id](example.png)
+
 ## Installation
 
 ```bash
