@@ -1,15 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width,initial-scale=1'>
-
-	<title>Library playground</title>
-
-	<script defer src='bundle.js'></script>
-	<script defer src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Watermark SDK</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+	<script src="bundle.js"></script>
+    <script src="main.js" defer></script>
 </head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-center" data-i18n="title">Demo Watermark SDK</h1>
+            <select id="langSelector" class="border border-gray-300 rounded-md shadow-sm p-2">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+            </select>
+        </div>
 
-<body>
+        <form id="watermarkForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="selectImage">Seleccionar Imagen</label>
+                        <input type="file"
+                               id="imageInput"
+                               accept="image/*"
+                               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="watermarkText">Texto de Marca de Agua</label>
+                        <input type="text"
+                               id="watermarkText"
+                               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                               data-i18n="placeholder"
+                               placeholder="CONFIDENCIAL">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="fontSize">Tamaño de Fuente (px)</label>
+                        <input type="number"
+                               id="fontSize"
+                               value="12"
+                               min="3"
+                               max="100"
+                               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="opacity">Opacidad</label>
+                        <input type="number"
+                               id="opacity"
+                               value="0.5"
+                               min="0.1"
+                               max="1"
+                               step="0.1"
+                               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="baseColor">Color Base (Hue 0-360)</label>
+                        <input type="number"
+                               id="baseHue"
+                               value="270"
+                               min="0"
+                               max="360"
+                               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="colorStep">Paso de Color</label>
+                        <input type="number"
+                               id="hueStep"
+                               value="3"
+                               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="originalImage">Imagen Original</label>
+                        <img id="originalPreview" class="hidden mt-2 max-w-full h-auto border rounded-lg" alt="Vista previa original">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700" data-i18n="result">Resultado</label>
+                        <img id="preview" class="hidden mt-2 max-w-full h-auto border rounded-lg" alt="Vista previa con marca de agua">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center space-x-4">
+                <button type="submit"
+                        class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        data-i18n="applyWatermark">
+                    Aplicar Marca de Agua
+                </button>
+
+                <a id="downloadBtn"
+                   class="hidden bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                   href="#"
+                   download
+                   data-i18n="downloadImage">
+                    Descargar Imagen
+                </a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
