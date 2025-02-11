@@ -7,12 +7,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      packages: write
-
     steps:
 
       - name: Checkout
