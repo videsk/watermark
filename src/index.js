@@ -77,7 +77,7 @@ class IDWatermark {
    */
     async addWatermark(imageInput, watermarkText, encodeOptions = {}) {
 
-    const image = await IDWatermark.loadImage(imageInput, this.bitmapOptions);
+    const image = await createImageBitmap(imageInput, this.bitmapOptions);
 
     const canvas = new OffscreenCanvas(image.width, image.height);
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -207,17 +207,6 @@ class IDWatermark {
       data[i + 2] = gray; // B
     }
     ctx.putImageData(imageData, 0, 0);
-  }
-
-  /**
-   * Loads an image from a source.
-   *
-   * @param {File|Blob|ImageData|ImageBitmap|OffscreenCanvas|VideoFrame|HTMLImageElement|SVGImageElement|HTMLCanvasElement} input - The input image.
-   * @param {Object} options - ImageBitmap options.
-   * @returns {Promise<ImageBitmap>} - A promise that resolves to an ImageBitmap.
-   */
-  static async loadImage(input, options = {}) {
-    return createImageBitmap(input, options);
   }
 
   /**
